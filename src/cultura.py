@@ -71,13 +71,13 @@ class Cultura():
 
         novo_produto = Produto(codigo_cultura, nome_produto, quantidade_produto_int, comprimento_int, rua_int)  
         print("Produto Cadastrado !!!")
-        print(f'{'cultura'.ljust(25)} | {'codigo do produto'.ljust(25)} | {'nome do produto'.ljust(25)} | {'quantidade  de produto (mL)'.ljust(25)} | {'comprimento'.ljust(25)} | {'largura rua '.ljust(25)} | {'status'}')
+        print(f'{'cultura'.ljust(25)} | {'codigo do produto'.ljust(25)} | {'nome do produto'.ljust(25)} | {'quantidade  de produto (mL)'.ljust(25)} | {'comprimento'.ljust(25)} | {'largura rua '.ljust(25)}')
         cultura_str = 'Cafe' if codigo_cultura == '1' else 'Cana de açucar '
         codigo_str = str(novo_produto._codigo)             
         quantidade_str = str(novo_produto._quantidade) 
         comprimento_str = str(novo_produto._comprimento)           
         rua_str = str(novo_produto._rua)           
-        print(f'{cultura_str.ljust(25)} | {codigo_str.ljust(25)} | {novo_produto._nome_produto.ljust(25)} | {quantidade_str.ljust(25)} | {comprimento_str.ljust(25)} | {rua_str.ljust(25) } | {novo_produto._ativo }')     
+        print(f'{cultura_str.ljust(25)} | {codigo_str.ljust(25)} | {novo_produto._nome_produto.ljust(25)} | {quantidade_str.ljust(25)} | {comprimento_str.ljust(25)} | {rua_str.ljust(25) } ')     
         print("\n")
 
     def atualizar_produto():        

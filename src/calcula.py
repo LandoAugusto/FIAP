@@ -12,8 +12,8 @@ def calcular_insumos_por_produto():
         quantidade_str = str(item._quantidade )        
         comprimento_str = str(item._comprimento )  
         rua_str = str(item._rua )      
-        print(f'{'cultura'.ljust(25)} | {'codigo do produto'.ljust(25)} | {'nome do produto'.ljust(25)} | {'quantidade de produto (mL)'.ljust(35)} | {'comprimento'.ljust(25)} | {'largura rua '.ljust(25)} | {'status'}')
-        print(f'{cultura_str.ljust(25)} | {codigo_str.ljust(25)} | {item._nome_produto.ljust(25)} | {quantidade_str.ljust(35) } | {comprimento_str.ljust(25) } | {rua_str.ljust(25) } | {item._ativo }')
+        print(f'{'cultura'.ljust(25)} | {'codigo do produto'.ljust(25)} | {'nome do produto'.ljust(25)} | {'quantidade de produto (mL)'.ljust(35)} | {'comprimento'.ljust(25)} | {'largura rua '.ljust(25)} ')
+        print(f'{cultura_str.ljust(25)} | {codigo_str.ljust(25)} | {item._nome_produto.ljust(25)} | {quantidade_str.ljust(35) } | {comprimento_str.ljust(25) } | {rua_str.ljust(25) } ')
          # Calcula a area
         largura_total = calcular_area(item._comprimento, item._rua)
         # Quantidade de produto aplicada por metro
