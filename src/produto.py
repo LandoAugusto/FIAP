@@ -36,3 +36,13 @@ class Produto:
         for indice, item in enumerate(Produto.produtos):
             if item._codigo == codigo_produto :
                del Produto.produtos[indice]
+
+    def filtrar_produto(codigo_produto):
+        return list(filter(lambda x: x._codigo == codigo_produto, Produto.produtos))
+    
+    def is_float(value):
+        try:
+            float(value)
+            return True
+        except ValueError:
+            return False

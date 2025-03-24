@@ -1,7 +1,7 @@
 from produto import Produto
 import calcula
 class Cultura():
-
+    
     codigo_cultura = 1
     codigo_produto_int = 0
     quantidade_produto_int = 0
@@ -45,7 +45,7 @@ class Cultura():
         nome_produto = input("Informe o nome do produto: ")        
         while(True):
             quantidade_produto = input("Quantidade de produto aplicada por mL/metro com o trator: ") 
-            if quantidade_produto.isdecimal():
+            if Produto.is_float(quantidade_produto):
                 quantidade_produto_int = float(quantidade_produto)
                 break
             else:
@@ -53,7 +53,7 @@ class Cultura():
 
         while(True):
             rua = input("Digite a largura de cada rua (em metros):")
-            if rua.isdecimal():
+            if Produto.is_float(rua):
                 rua_int = float(rua)
                 break
             else:
@@ -61,13 +61,11 @@ class Cultura():
 
         while(True):
             comprimento =  input("Digite o comprimento total da lavoura (em metros): ")
-            if comprimento.isdecimal():
+            if Produto.is_float(comprimento):
                 comprimento_int = float(comprimento)
                 break
             else:
                 print("Comprimento  invalída")     
-
-        
 
         novo_produto = Produto(codigo_cultura, nome_produto, quantidade_produto_int, comprimento_int, rua_int)  
         print("Produto Cadastrado !!!")
@@ -82,47 +80,60 @@ class Cultura():
 
     def atualizar_produto():        
         while(True):
-            codigo_produto = input("Informe o codigo produto: ")
+            codigo_produto = input("Informe o codigo produto: ")          
             if codigo_produto.isnumeric():
                 codigo_produto_int = int(codigo_produto)
-                break
-            else:
-                print("Codigo produto invalído")   
+                filtrar_produto = Produto.filtrar_produto(codigo_produto_int)                              
+                if filtrar_produto:                    
+                    nome_produto = input("Informe o novo nome do produto: ")
+                    while(True):
+                        quantidade_produto = input("Informe a nova quantidade a produto: ") 
+                        if Produto.is_float(quantidade_produto):
+                            quantidade_produto_int = float(quantidade_produto)
+                            break
+                        else:
+                            print("Codigo produto invalído") 
 
-        nome_produto = input("Informe o novo nome do produto: ")
-        while(True):
-            quantidade_produto = input("Informe a nova quantidade a produto: ") 
-            if codigo_produto.isnumeric():
-                quantidade_produto_int = float(quantidade_produto)
-                break
-            else:
-                print("Codigo produto invalído") 
+                    while(True):
+                        comprimento =  input("Digite o comprimento do lado do quadrado: ") 
+                        if Produto.is_float(comprimento):
+                            comprimento_int = float(comprimento)
+                            break
+                        else:
+                            print("Comprimento  invalída")
 
-        while(True):
-            comprimento =  input("Digite o comprimento do lado do quadrado: ") 
-            if comprimento.isnumeric():
-                comprimento_int = int(comprimento)
-                break
-            else:
-                print("Comprimento  invalída")
+                    while(True):
+                        rua = input("Quantas ruas a lavoura têm ?")
+                        if Produto.is_float(comprimento):
+                            rua_int = float(rua)
+                            break
+                        else:
+                            print("Número de ruas invalída")     
 
-        while(True):
-            rua = input("Quantas ruas a lavoura têm ?")
-            if rua.isnumeric():
-                rua_int = int(rua)
-                break
+                    Produto.atualizar_produto(codigo_produto_int, nome_produto, quantidade_produto_int, comprimento_int, rua_int)
+                    print("Produto Atualizado com suceso !!!")
+                    print(Produto.listar_produto())
+                    print("\n")  
+                    break
+                else:
+                    print("Não foi possivel localizar o codigo do produto\n")                                                          
             else:
-                print("Número de ruas invalída")     
-
-        Produto.atualizar_produto(codigo_produto_int, nome_produto, quantidade_produto_int, comprimento_int, rua_int)
-        print("Produto Atualizado !!!")
-        print(Produto.listar_produto())
-        print("\n")
+                print("Codigo produto invalído")  
 
     def deletar_produto():
-        codigo_produto = int(input("Informe o codigo produto:"))
-        Produto.deletar_produto(codigo_produto)
-        print("\n")
+        while(True):
+            codigo_produto = input("Informe o codigo produto:")       
+            if codigo_produto.isnumeric():
+                codigo_produto_int = int(codigo_produto)
+                filtrar_produto = Produto.filtrar_produto(codigo_produto_int)
+                if filtrar_produto: 
+                    Produto.deletar_produto(codigo_produto_int)
+                    print("Produto deletado com sucesso !\n")                     
+                    break               
+                else:
+                    print("Não foi possivel localizar o codigo do produto\n") 
+            else:
+                print("Codigo produto invalído") 
         
     def listar_produto():
        print(Produto.listar_produto())
